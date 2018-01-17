@@ -1,0 +1,34 @@
+﻿
+<div class="form-group">
+    <label>Category</label>
+    <select class="form-control" #selectedCategory>
+        <option *ngFor="let c of categories" [value]="c.categoryName">{{c.categoryName}}</option>
+    </select>
+    <button class="btn btn-primary" (click)="findHamperFromSelect(selectedCategory.value)">
+        Search
+    </button>
+    <button class="btn btn-primary" (click)="getAll()">Show All Hampers</button>
+</div>
+<br/>
+<div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Details</th>
+                <th>Price</th>
+                <!--<th>Category</th>-->
+            </tr>
+            <tr *ngFor="let h of hampers; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{h.name}}</td>
+                <td>{{h.details}}</td>
+                <td>{{h.price | currency : 'AUD' : true}}</td>
+                <!--<td>{{h.CategoryName}}</td>-->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
